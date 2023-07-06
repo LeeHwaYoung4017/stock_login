@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+<body>
+    <form action="register" method="POST" onsubmit="return validateForm()">
+        <h2>아이디</h2><input type="text" id="username" name="username" readonly><input type="button" onclick="id_checkForm()" value="중복확인" autocomplete="off"><br><br>
+        <h2>패스워드</h2><input type="password" id="password" name="password" minlength="6" maxlength="15" autocomplete="off"><br><br>
+        <h2>이름</h2><input type="text" id="name" name="name" autocomplete="off"><br><br>
+        <h2>이메일</h2><input type="email" id="email" name="email" autocomplete="off"><br><br>
+        <h2>주소</h2>
+        <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+        <input type="text" id="address1" name="address1" placeholder="우편번호" readonly><br>
+        <input type="text" id="address2" name="address2" placeholder="주소" readonly><br>
+        <input type="text" id="address3" name="address3" placeholder="상세주소"><br>
+        <input type="hidden" id="managerCheck" name="managerCheck" value="0"><br><br>
+        <input type="submit" value="회원가입">
+        <input type="button" value="뒤로가기" onclick="history.back()">
+    </form>
+
+
+</body>
+
+<script>
+
+    function validateForm(){
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var address1 = document.getElementById('address1').value;
+        var address2 = document.getElementById('address2').value;
+        var address3 = document.getElementById('address3').value;
+
+        if(username === null || username.length < 4 || username.length > 20) {
+            alert('아이디는 4자 이상 20자 이내로 입력해야 합니다.');
+            return false;
+        }
+        if(password === null || password.length < 6 || password.length > 15) {
+            alert('패스워드는 6자 이상 15자 이내로 입력해야 합니다.');
+            return false;
+        }
+        if(name === null || name.length === 0) {
+            alert('이름을 입력해야 합니다.');
+            return false;
+        }
+        if(email === null || email.length === 0) {
+            alert('이메일을 입력해야 합니다.');
+            return false;
+        }
+        if(address1 === null || address1 === 0 || address2 === null || address2 === 0 || address3 === null || address3 === 0) {
+            alert('주소를 입력해야 합니다.');
+            return false;
+        }
+
+    }
+
+    function id_checkForm(){
+        window.name="parentForm";
+        window.open("/registerIdCheck","아이디 중복체크","width=500,height=300,resizable=no,scrollbars=no");
+    }
+
+
+    //다음 주소 API
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('address1').value = data.zonecode;
+                document.getElementById("address2").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("address3").focus();
+            }
+        }).open();
+    }
+</script>
+</html>

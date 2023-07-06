@@ -1,0 +1,13 @@
+CREATE TABLE member(
+  id INTEGER(50),
+  username VARCHAR(100) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  address1 VARCHAR(100) NOT NULL,
+  address2 VARCHAR(100) NOT NULL,
+  address3 VARCHAR(100) NOT NULL,
+  managerCheck VARCHAR(30) NOT NULL,
+  registrationDate DATE NOT NULL,
+  PRIMARY KEY(id)
+);

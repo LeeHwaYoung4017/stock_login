@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>아이디찾기</title>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+<body>
+    <h2>아이디 찾기 결과</h2><br>
+    <div th:if="${error}">
+        <p th:text="${error}"></p>
+    </div>
+    <div th:unless="${error}">
+        <p>아이디: <span th:text="${username}"></span></p>
+    </div>
+    <button type="button"><a href="login">로그인 하러가기</a></button>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>아이디 중복 체크</title>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <h2>아이디</h2><input type="text" id="username" name="username" autocomplete="off">
+    <input type="button" onclick="id_check()" value="중복확인"><br><br>
+    <div id="result"></div>
+    <input type="button" onclick="id_clear()" value="사용하기" id="useButton" disabled>
+    <input type="button" onclick="window.close()" value="뒤로가기">
+
+</body>
+
+<script>
+
+    //아이디 중복체크
+    function id_check(){
+        var username = document.getElementById('username').value; // 입력 값을 username으로 저장
+
+        if(username === null || username.length < 4 || username.length > 20) {
+            alert('아이디는 4자 이상 20자 이내로 입력해야 합니다.');
+            return false;
+        }
+
+        $.ajax({
+            url: '/checkUsername',
+            type: 'GET',
+            data: { username: username },
+            success: function (response){
+                console.log(response);
+                if(response.available){
+                    $('#result').html('사용 가능한 아이디입니다.');
+                    $('#useButton').prop('disabled', false);
+                    var openerWindow = window.opener;
+                    openerWindow.document.getElementById('username').value = username;
+                }else{
+                    console.log(response);
+                    $('#result').html('이미 사용중인 아이디입니다.');
+                    $('#useButton').prop('disabled', true);
+                }
+            },
+            error: function (xhr, status, error){
+                console.error(xhr.status);
+            }
+        });
+
+    }
+
+    //중복체크 된 값을 register.html의 username으로 값을 전달
+    function id_clear(){
+        var username = document.getElementById('username').value;
+        var openerUserName = window.opener.document.getElementById('username');
+        openerUserName.value = username;
+        window.close();
+    }
+
+</script>
+</html>

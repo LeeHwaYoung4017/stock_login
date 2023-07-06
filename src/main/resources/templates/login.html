@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+
+    <form method="post" action="/login">
+        <h2>아이디</h2><input type="text" id="username" name="username">
+        <h2>패스워드</h2><input type="password" id="password" name="password">
+        <button type="submit" value="Login">로그인</button>
+    </form>
+    <button type="button"><a href="register">회원가입</a></button>
+    <br>
+    <button type="button"><a href="findId">아이디찾기</a></button>
+    <button type="button"><a href="findPassword">비밀번호찾기</a></button>
+
+
+</body>
+</html>
