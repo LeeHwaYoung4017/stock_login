@@ -9,11 +9,18 @@
   <button type="button"><a href="logout">로그아웃</a></button>
 
   <!-- 세션 값 출력 -->
-  <p>Username (from session): <span th:text="${session.username}">[Username]</span></p>
+  <p>Username session: <span th:text="${session.username}">[Username]</span></p>
 
   <!-- 쿠키 값 출력 -->
-  <p>Username (from cookie): <span th:if="${cookies != null}" th:text="${cookies['username']?.value}">[Username]</span></p>
+  <p>Username cookie: <span th:if="${cookies != null}" th:text="${cookies['username']?.value}">[Username]</span></p>
 
+  <!-- 회원정보 확인 -->
+  <p>username: <span th:text="${member?.username}"></span></p>
+  <p>name: <span th:text="${member?.name}"></span></p>
+  <p>email: <span th:text="${member?.email}"></span></p>
+  <p>address1: <span th:text="${member?.address1}"></span></p>
+  <p>address2: <span th:text="${member?.address2}"></span></p>
+  <p>address3: <span th:text="${member?.address3}"></span></p>
 
 
 </body>

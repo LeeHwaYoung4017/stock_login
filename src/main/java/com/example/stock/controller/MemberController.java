@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.PrintWriter;
 import java.util.Date;
@@ -44,13 +45,16 @@ public class MemberController {
                         HttpSession session){
         if(memberService.isValidMember(username, password)){
             //로그인 성공 시
-            model.addAttribute("username", username);
+            Member member = memberService.findMemberByUsername(username); // 로그인 아이디에 해당되는 회원정보를 저장
+            System.out.println("Test Date = "+member);
+            
+            model.addAttribute("member", member); // 로그인 정보를 전달
             session.setAttribute("username", username); // 세션을 로그인 정보 저장
 
             Cookie cookie = new Cookie("username", username); // 쿠키 생성
             response.addCookie(cookie);
 
-            return "redirect:/home";
+            return "home";
         } else {
             //로그인 실패 시
             model.addAttribute("error", "Invalid username or password");

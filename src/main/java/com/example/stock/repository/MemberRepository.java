@@ -25,6 +25,4 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Query("SELECT m FROM Member m WHERE m.name = :name AND m.username = :username")
     Member userNameAndUsernameCheck(@Param("name") String name, @Param("username") String username);
 
-
-
 }

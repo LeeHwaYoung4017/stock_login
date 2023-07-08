@@ -16,6 +16,10 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
+    public Member findMemberByUsername(String username) {
+        return  memberRepository.findByUsername(username);
+    }
+
 
     //아이디,패스워드가 유효한지 체크
     public boolean isValidMember(String username, String password){
@@ -65,5 +69,6 @@ public class MemberService {
             memberRepository.save(member);
         }
     }
+
 
 }
