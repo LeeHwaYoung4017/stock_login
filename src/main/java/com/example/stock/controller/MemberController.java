@@ -47,7 +47,7 @@ public class MemberController {
             //로그인 성공 시
             Member member = memberService.findMemberByUsername(username); // 로그인 아이디에 해당되는 회원정보를 저장
             System.out.println("Test Date = "+member);
-            
+
             model.addAttribute("member", member); // 로그인 정보를 전달
             session.setAttribute("username", username); // 세션을 로그인 정보 저장
 
@@ -55,9 +55,10 @@ public class MemberController {
             response.addCookie(cookie);
 
             return "home";
-        } else {
+        }
+        else {
             //로그인 실패 시
-            model.addAttribute("error", "Invalid username or password");
+            //model.addAttribute("error", "Invalid username or password");
             try {
                 response.setContentType("text/html; charset=utf-8");
                 PrintWriter w = response.getWriter();

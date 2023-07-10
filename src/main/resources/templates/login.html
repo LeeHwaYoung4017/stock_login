@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/js" th:href="@{/js/particlesJS.js}">
+
 </head>
-<body>
+<body id="particles-js"></body>
+<div class="animated bounceInDown">
+    <div class="container">
+        <span class="error animated tada" id="msg"></span>
+        <form name="form1" class="box" method="post" action="/login">
+            <h4>Login<span>Dashboard</span></h4>
+            <h5>Sign in to your account.</h5>
+            <input type="text" name="username" id="username" placeholder="아이디를 입력하세요" autocomplete="off">
+            <i class="typcn typcn-eye" id="eye"></i>
+            <input type="password" name="password" id="password" placeholder="패스워드를 입력하세요" autocomplete="off">
 
-    <form method="post" action="/login">
-        <h2>아이디</h2><input type="text" id="username" name="username">
-        <h2>패스워드</h2><input type="password" id="password" name="password">
-        <button type="submit" value="Login">로그인</button>
-    </form>
-    <button type="button"><a href="register">회원가입</a></button>
-    <br>
-    <button type="button"><a href="findId">아이디찾기</a></button>
-    <button type="button"><a href="findPassword">비밀번호찾기</a></button>
+            <a href="findPassword" class="forgetpass">비밀번호찾기</a>
+            <a href="findId" class="forgetpass">아이디찾기</a>
 
-
-</body>
+            <input type="submit" value="Sign in" class="btn1">
+        </form>
+        <a href="register" class="dnthave">Sign up</a>
+    </div>
+</div>
 </html>

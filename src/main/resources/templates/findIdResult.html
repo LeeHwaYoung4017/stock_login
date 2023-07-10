@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <title>아이디찾기</title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-</head>
-<body>
-    <h2>아이디 찾기 결과</h2><br>
-    <div th:if="${error}">
-        <p th:text="${error}"></p>
-    </div>
-    <div th:unless="${error}">
-        <p>아이디: <span th:text="${username}"></span></p>
-    </div>
-    <button type="button"><a href="login">로그인 하러가기</a></button>
 
-</body>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/js" th:href="@{/js/particlesJS.js}">
+
+</head>
+<body id="particles-js"></body>
+<div class="animated bounceInDown">
+    <div class="container">
+        <div class="box">
+            <span class="error animated tada" id="msg"></span>
+            <div th:if="${error}">
+                <p th:text="${error}"></p>
+            </div>
+            <div th:unless="${error}">
+                <h4>아이디: <span th:text="${username}"></span></h4>
+            </div>
+            <a href="login">로그인 하러가기</a>
+        </div>
+    </div>
+</div>
 
 </html>

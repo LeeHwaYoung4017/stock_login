@@ -5,16 +5,36 @@
     <title>아이디 중복 체크</title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
 
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/js" th:href="@{/js/particlesJS.js}">
+
+</head>
+<!--
+<body>
     <h2>아이디</h2><input type="text" id="username" name="username" autocomplete="off">
     <input type="button" onclick="id_check()" value="중복확인"><br><br>
     <div id="result"></div>
     <input type="button" onclick="id_clear()" value="사용하기" id="useButton" disabled>
     <input type="button" onclick="window.close()" value="뒤로가기">
-
 </body>
+-->
+
+<body id="particles-js"></body>
+<div class="animated bounceInDown">
+    <div class="container2">
+        <span class="error animated tada" id="msg"></span>
+        <form name="form1" class="box" method="post" action="/findId">
+            <h4>아이디<span>중복체크</span></h4>
+            <h5></h5>
+            <input type="text" name="username" id="username" placeholder="아이디를 입력하세요" autocomplete="off">
+            <input type="button" onclick="id_check()" value="중복확인"><br><br>
+            <div id="result"></div>
+            <input type="button" onclick="id_clear()" value="사용하기" id="useButton" disabled>
+            <input type="button" onclick="window.close()" value="뒤로가기">
+        </form>
+    </div>
+</div>
 
 <script>
 
