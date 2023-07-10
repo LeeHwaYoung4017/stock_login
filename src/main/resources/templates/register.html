@@ -35,22 +35,32 @@
         var address2 = document.getElementById('address2').value;
         var address3 = document.getElementById('address3').value;
 
-        if(username === null || username.length < 4 || username.length > 20) {
-            alert('아이디는 4자 이상 20자 이내로 입력해야 합니다.');
+        //아이디 영어 또는 숫자(4~15자리 입력) 정규식
+        var usernameCheck = /^[a-zA-Z0-9]{4,15}$/;
+        if(username === null || !usernameCheck.test(username)) {
+            alert('아이디는 4자 이상 15자 이내로 입력해야 합니다.');
             return false;
         }
-        if(password === null || password.length < 6 || password.length > 15) {
-            alert('패스워드는 6자 이상 15자 이내로 입력해야 합니다.');
+
+        //비밀번호 영문자+숫자+특수조합(6~15자리 입력) 정규식
+        var passworddCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,15}$/;
+        if(password === null || !passworddCheck.test(password)) {
+            alert('패스워드는 영문+숫자+특수문자 조합으로 6자이상 15자이내로 입력해야 합니다.');
             return false;
         }
-        if(name === null || name.length === 0) {
-            alert('이름을 입력해야 합니다.');
+
+        //이름 영어 또는 한글(2~15자리 입력) 정규식
+        var nameCheck = /^[가-힣a-zA-Z]{2,15}$/
+        if(name === null || name.length === 0 || !nameCheck.test(name)) {
+            alert('이름 형식이 올바르지 않습니다.');
             return false;
         }
+
         if(email === null || email.length === 0) {
             alert('이메일을 입력해야 합니다.');
             return false;
         }
+
         if(address1 === null || address1 === 0 || address2 === null || address2 === 0 || address3 === null || address3 === 0) {
             alert('주소를 입력해야 합니다.');
             return false;

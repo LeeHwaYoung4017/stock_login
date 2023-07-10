@@ -22,8 +22,13 @@
     function id_check(){
         var username = document.getElementById('username').value; // 입력 값을 username으로 저장
 
-        if(username === null || username.length < 4 || username.length > 20) {
-            alert('아이디는 4자 이상 20자 이내로 입력해야 합니다.');
+        if(username === null || username.length < 4 || username.length > 15) {
+            alert('아이디는 4자 이상 15자 이내로 입력해야 합니다.');
+            return false;
+        }
+        var usernameCheck = /^[a-zA-Z0-9]{4,15}$/;
+        if(!usernameCheck.test(username)) {
+            alert('아이디는 영문+숫자 조합으로만 가능합니다.');
             return false;
         }
 
