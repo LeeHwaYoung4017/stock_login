@@ -39,23 +39,7 @@ body, html {
     border-top: 10px solid #79a6fe;
     border-bottom: 10px solid #8BD17C;
     width: 400px;
-    height: 100%;
-    box-shadow: 1px 1px 108.8px 19.2px rgb(25,31,53);
-}
-
-.container2{
-    margin: 0;
-    top: 50px;
-    left: 50%;
-    position: absolute;
-    text-align: center;
-    transform: translateX(-50%);
-    background-color: rgb( 33, 41, 66 );
-    border-radius: 9px;
-    border-top: 10px solid #79a6fe;
-    border-bottom: 10px solid #8BD17C;
-    width: 400px;
-    height: 200px;
+    height: 980px;
     box-shadow: 1px 1px 108.8px 19.2px rgb(25,31,53);
 }
 
@@ -147,6 +131,24 @@ label span {
 }
 
 .btn1:hover {
+    background: #5d33e6;
+}
+
+.btn2 {
+    border: 0;
+    background: #7f5feb;
+    color: #dfdeee;
+    border-radius: 100px;
+    width: 130px;
+    height: 30px;
+    font-size: 16px;
+    top: 79%;
+    left: 8%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn2:hover {
     background: #5d33e6;
 }
 

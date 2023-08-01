@@ -36,20 +36,19 @@
             <h4><span>회원가입</span></h4>
             <h5>아래와 같이 정보를 기입해주세요.</h5>
             <input type="text" name="username" id="username" placeholder="아이디 입력하세요" autocomplete="off" readonly>
-            <input type="button" onclick="id_checkForm()" value="중복확인" autocomplete="off">
+            <button onclick="id_checkForm()" value="중복확인" autocomplete="off" class="btn2">중복확인</button>
             <input type="password" name="password" id="password" placeholder="패스워드를 입력하세요" autocomplete="off">
             <input type="text" name="name" id="name" placeholder="이름 입력하세요" autocomplete="off">
             <input type="email" name="email" id="email" placeholder="이메일 입력하세요" autocomplete="off">
 
-            <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+            <button onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn2">우편번호 찾기</button><br>
             <input type="text" name="address1" id="address1" placeholder="우편번호" autocomplete="off" readonly>
             <input type="text" name="address2" id="address2" placeholder="주소" autocomplete="off" readonly>
             <input type="text" name="address3" id="address3" placeholder="상세주소" autocomplete="off">
 
             <input type="hidden" id="managerCheck" name="managerCheck" value="0"><br><br>
-            <br>
             <input type="submit" value="회원가입" class="btn1">
-            <a onclick="history.back()" class="dnthave">뒤로가기</a>
+            <a href="login" class="dnthave">뒤로가기</a>
         </form>
     </div>
 </div>
@@ -100,7 +99,7 @@
 
     function id_checkForm(){
         window.name="parentForm";
-        window.open("/registerIdCheck","아이디 중복체크","width=500,height=300,resizable=no,scrollbars=no");
+        window.open("/registerIdCheck","아이디 중복체크","width=500,height=600,resizable=no,scrollbars=no");
     }
 
 
